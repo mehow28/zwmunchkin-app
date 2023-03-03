@@ -36,7 +36,7 @@ export class MunchkinService {
   }
 
   public addMunchkin(givenName: string, givenMale: boolean): void {
-    const newId = this.munchkins.length;
+    const newId = Math.max(...this.munchkins.map(x => x.id))+1;
     this.munchkins.push({
       id: newId,
       name: givenName,
@@ -50,42 +50,36 @@ export class MunchkinService {
   }
 
   public changeLevel(id:number,increase:boolean):void{
-    if(this.munchkins.length>id){
-      if(increase){
-        if(this.munchkins[id].level<10){
-          this.munchkins[id].level=this.munchkins[id].level+1
-        }
-      }
-      else{
-        if(this.munchkins[id].level>1){
-          this.munchkins[id].level=this.munchkins[id].level-1
-        }
+    if(increase){
+      if(this.munchkins[this.munchkins.findIndex(x=>x.id===id)].level<10){
+        this.munchkins[this.munchkins.findIndex(x=>x.id===id)].level=this.munchkins[this.munchkins.findIndex(x=>x.id===id)].level+1
       }
     }
+    else{
+      if(this.munchkins[this.munchkins.findIndex(x=>x.id===id)].level>1){
+        this.munchkins[this.munchkins.findIndex(x=>x.id===id)].level=this.munchkins[this.munchkins.findIndex(x=>x.id===id)].level-1
+      }
+    }
+  
     this.saveMunchkinsToStorage();
 
   }
 
 
   public changeItems(id:number,increase:boolean):void{
-    if(this.munchkins.length>id){
       if(increase){       
-          this.munchkins[id].items=this.munchkins[id].items+1        
+          this.munchkins[this.munchkins.findIndex(x=>x.id===id)].items=this.munchkins[this.munchkins.findIndex(x=>x.id===id)].items+1        
       }
       else{
-          this.munchkins[id].items=this.munchkins[id].items-1       
+          this.munchkins[this.munchkins.findIndex(x=>x.id===id)].items=this.munchkins[this.munchkins.findIndex(x=>x.id===id)].items-1       
       }
-    }
     this.saveMunchkinsToStorage();
 
   }
 
   public changeSex(id:number):void{
-    if(this.munchkins.length>id){
-      this.munchkins[id].male=!this.munchkins[id].male
-    }
+    this.munchkins[this.munchkins.findIndex(x=>x.id===id)].male=!this.munchkins[this.munchkins.findIndex(x=>x.id===id)].male
     this.saveMunchkinsToStorage();
-
   }
 
   public editMunchkin(
@@ -96,22 +90,23 @@ export class MunchkinService {
     newItems?: number
   ): void {
     if (newName != null) {
-      this.munchkins[id].name = newName;
+      this.munchkins[this.munchkins.findIndex(x=>x.id===id)].name = newName;
     }
     if (newLevel != null) {
-      this.munchkins[id].level = newLevel;
+      this.munchkins[this.munchkins.findIndex(x=>x.id===id)].level = newLevel;
     }
     if (newItems != null) {
-      this.munchkins[id].items = newItems;
+      this.munchkins[this.munchkins.findIndex(x=>x.id===id)].items = newItems;
     }
     if (changeSex) {
-      this.munchkins[id].male = !this.munchkins[id].male;
+      this.munchkins[this.munchkins.findIndex(x=>x.id===id)].male = !this.munchkins[this.munchkins.findIndex(x=>x.id===id)].male;
     }
     this.saveMunchkinsToStorage();
 
   }
 
   public removeMunchkin(id: number): void {
+    id=this.munchkins.findIndex(x=>x.id===id);
     this.munchkins.splice(id, 1);
     this.saveMunchkinsToStorage();
 

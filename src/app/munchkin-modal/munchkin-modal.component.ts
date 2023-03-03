@@ -1,21 +1,30 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-import { MunchkinService } from '../services/munchkin.service';
+import { Munchkin, MunchkinService } from '../services/munchkin.service';
 
 @Component({
   selector: 'app-munchkin-modal',
   templateUrl: './munchkin-modal.component.html',
   styleUrls: ['./munchkin-modal.component.scss'],
 })
-export class MunchkinModalComponent {
+export class MunchkinModalComponent implements OnInit{
   @Input() id!:number;
   constructor(private modalCtrl: ModalController, private data:MunchkinService) {}
+
+  ngOnInit(): void {
+    this.id=this.getMunchkinIndex(this.id)
+  }
+  
+  getMunchkinIndex(idCheck:number){
+    const munchkins=this.getMunchkins();
+    return munchkins.findIndex(x=>x.id===idCheck)
+  }
 
   cancel() {
     return this.modalCtrl.dismiss(null, 'cancel');
   }
 
-  getMunchkins(){
+  getMunchkins():Munchkin[]{
     return this.data.getMunchkins();
   }
 

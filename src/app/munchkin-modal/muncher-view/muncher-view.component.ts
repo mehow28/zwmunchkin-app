@@ -11,6 +11,11 @@ export class MuncherViewComponent   {
   
   constructor(private data: MunchkinService) { }
 
+  getMunchkinIndex(idCheck:number){
+    const munchkins=this.data.getMunchkins();
+    return munchkins.findIndex(x=>x.id===idCheck)
+  }
+
   changeMunchkinLevel(id:number,increase:boolean){
     this.data.changeLevel(id,increase)
   }

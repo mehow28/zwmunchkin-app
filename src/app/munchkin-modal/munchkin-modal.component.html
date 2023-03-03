@@ -9,6 +9,6 @@
 <ion-content class="ion-padding">
   <app-muncher-view [munchkin]="getMunchkins()[id]"/>
   <ion-list>
-    <app-one-munchkin *ngFor="let munchkin of getMunchkins()" [munchkin]="munchkin" [isEditMode]="false" [viewMode]="'modalPage'" (click)="id=munchkin.id"></app-one-munchkin>
+    <app-one-munchkin *ngFor="let munchkin of getMunchkins()" [munchkin]="munchkin" [isEditMode]="false" [viewMode]="'modalPage'" (click)="id=getMunchkinIndex(munchkin.id)"></app-one-munchkin>
   </ion-list>
 </ion-content>
