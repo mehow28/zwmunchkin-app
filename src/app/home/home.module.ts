@@ -5,6 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { HomePage } from './home.page';
 
 import { HomePageRoutingModule } from './home-routing.module';
+import { OneMunchkinModule } from '../one-munchkin/one-munchkin.module';
+import { MunchkinModalModule } from '../munchkin-modal/munchkin-modal.module';
 
 
 @NgModule({
@@ -12,7 +14,9 @@ import { HomePageRoutingModule } from './home-routing.module';
     CommonModule,
     FormsModule,
     IonicModule,
-    HomePageRoutingModule
+    HomePageRoutingModule,
+    OneMunchkinModule,
+    MunchkinModalModule
   ],
   declarations: [HomePage]
 })
