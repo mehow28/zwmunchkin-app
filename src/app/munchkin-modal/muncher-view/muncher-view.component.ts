@@ -1,4 +1,6 @@
 import { Component, Input } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { BattleModalComponent } from 'src/app/battle-modal/battle-modal.component';
 import { Munchkin, MunchkinService } from 'src/app/services/munchkin.service';
 
 @Component({
@@ -9,7 +11,18 @@ import { Munchkin, MunchkinService } from 'src/app/services/munchkin.service';
 export class MuncherViewComponent   {
   @Input() munchkin!:Munchkin;
   
-  constructor(private data: MunchkinService) { }
+  constructor(private data: MunchkinService,private modalCtrl: ModalController) { }
+
+  async showMunchkinModal(id:number) {   
+    const modal = await this.modalCtrl.create({
+      component: BattleModalComponent,
+      componentProps:{
+        id:id
+      }
+    });
+    modal.present();
+  }
+
 
   getMunchkinIndex(idCheck:number){
     const munchkins=this.data.getMunchkins();

@@ -1,0 +1,82 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button color="medium" (click)="cancel()"><ion-icon name="arrow-back-outline"/></ion-button>
+    </ion-buttons>
+    <ion-title>Walka</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <ion-card class="playerSide"> 
+    <div class="counter">
+      {{getMunchkinPower()}}
+    </div>
+    <ion-card-content>
+      <ion-item>
+        <ion-label>{{getMunchkins()[id].name}}</ion-label>
+        <ion-grid>
+          <ion-row>
+            <ion-col size="5"></ion-col>
+            <ion-col size="3" class="padding-fix">{{getMunchkins()[id].level+getMunchkins()[id].items}}</ion-col>
+            <ion-col size="1" class="padding-fix">+</ion-col>
+            <ion-col size="3"><ion-input [(ngModel)]="munchkinBonuses[0]" type="number"></ion-input></ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+      <ion-item *ngIf="ally===undefined">
+        <ion-select [(ngModel)]="ally" placeholder="Dodaj pomocnika!">
+          <div *ngFor="let munchkin of getMunchkins()">
+            <ion-select-option  *ngIf="munchkin.id!==getMunchkins()[id].id&&munchkin.id!==0" [value]="munchkin" >{{munchkin.name}}</ion-select-option>
+          </div> 
+        </ion-select>
+      </ion-item>
+      <ion-item *ngIf="ally!==undefined">
+        <ion-label>{{getMunchkins()[getMunchkinIndex(ally.id)].name}}</ion-label>
+        <ion-grid>
+          <ion-row>
+            <ion-col size="1"></ion-col>
+            <ion-col size="2">
+              <ion-button fill="clear" (click)="ally=undefined">
+                <ion-icon name="trash-outline" class="del-icon"></ion-icon>
+              </ion-button>
+            </ion-col>
+            <ion-col size="2"></ion-col>
+            <ion-col size="3" class="padding-fix">{{getMunchkins()[getMunchkinIndex(ally.id)].level+getMunchkins()[getMunchkinIndex(ally.id)].items}}</ion-col>
+            <ion-col size="1" class="padding-fix">+</ion-col>
+            <ion-col size="3"><ion-input [(ngModel)]="munchkinBonuses[1]" type="number"></ion-input></ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>   
+    </ion-card-content>
+  </ion-card>
+  <div class="counter vs-text">
+    <h1>VS</h1>
+  </div>
+  <ion-card class="monsterSide">
+    <div class="counter">
+      {{getMonstersPower()}}
+    </div>
+    <ion-card-content>
+      <ion-item *ngFor="let monster of monsters; let i=index;">
+        <ion-label>{{ 'Potwór ' + (i+1) }}</ion-label>
+        <ion-grid>
+          <ion-row>
+            <ion-col size="1"></ion-col>
+            <ion-col size="2">
+              <ion-button fill="clear" (click)="deleteMonster(i)">
+                <ion-icon name="trash-outline" class="del-icon"></ion-icon>
+              </ion-button>
+            </ion-col> 
+            <ion-col size="2"></ion-col>
+            <ion-col size="3"><ion-input [(ngModel)]="monsters[i].strength" type="number"></ion-input></ion-col>
+            <ion-col size="1" class="padding-fix">+</ion-col>
+            <ion-col size="3"><ion-input [(ngModel)]="monsters[i].bonus" type="number"></ion-input></ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+      <ion-button expand="block" (click)="addMonster()">Dodaj potwora</ion-button>
+    </ion-card-content>
+  </ion-card>
+        
+
+</ion-content>

@@ -11,12 +11,10 @@ import { Munchkin, MunchkinService } from '../services/munchkin.service';
 export class OneMunchkinComponent {
   @Input() munchkin!: Munchkin;
   @Input() isEditMode!:boolean;
-  @Input() isModalView:boolean=false;
   @Input() viewMode!:string;
   constructor(private data: MunchkinService,private alertController: AlertController,private modalCtrl: ModalController){}
 
   async showMunchkinModal(id:number) {
-    this.isModalView=true;
     const modal = await this.modalCtrl.create({
       component: MunchkinModalComponent,
       componentProps:{
