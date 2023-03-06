@@ -4,6 +4,9 @@
       <ion-button color="medium" (click)="cancel()"><ion-icon name="arrow-back-outline"/></ion-button>
     </ion-buttons>
     <ion-title>{{id?getMunchkins()[id].name:''}}</ion-title>
+    <ion-button ripple fill="clear" shape="round" color="dark" (click)="killMunchkinAlert(id)" slot="end">
+      <ion-icon name="skull-outline" style="font-size:32px"/>
+    </ion-button>
   </ion-toolbar>
 </ion-header>
 <ion-content class="ion-padding">

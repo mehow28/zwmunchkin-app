@@ -82,6 +82,11 @@ export class MunchkinService {
     this.saveMunchkinsToStorage();
   }
 
+  public killMunchkin(id:number):void{
+    this.munchkins[this.munchkins.findIndex(x=>x.id===id)].items=0
+    this.saveMunchkinsToStorage();
+  }
+
   public editMunchkin(
     id: number,
     changeSex: boolean,

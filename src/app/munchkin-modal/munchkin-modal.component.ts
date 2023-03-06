@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { AlertController, ModalController } from '@ionic/angular';
 import { Munchkin, MunchkinService } from '../services/munchkin.service';
 
 @Component({
@@ -9,15 +9,20 @@ import { Munchkin, MunchkinService } from '../services/munchkin.service';
 })
 export class MunchkinModalComponent implements OnInit{
   @Input() id!:number;
-  constructor(private modalCtrl: ModalController, private data:MunchkinService) {}
+  constructor(private modalCtrl: ModalController, private data:MunchkinService,private alertController: AlertController) {}
 
   ngOnInit(): void {
     this.id=this.getMunchkinIndex(this.id)
   }
   
+  
   getMunchkinIndex(idCheck:number){
     const munchkins=this.getMunchkins();
     return munchkins.findIndex(x=>x.id===idCheck)
+  }
+
+  killMunchkin(id:number){
+    this.data.killMunchkin(id);
   }
 
   cancel() {
@@ -27,5 +32,27 @@ export class MunchkinModalComponent implements OnInit{
   getMunchkins():Munchkin[]{
     return this.data.getMunchkins();
   }
-
+  
+  async killMunchkinAlert(id:number) {
+    const alert = await this.alertController.create({
+      header: 'Zabić '+this.getMunchkins()[id].name+'?',
+      buttons: [
+          {
+            text: 'Anuluj',
+            role: 'cancel',
+            handler: () => {
+            },
+          },
+          {
+            text: 'MORDUJ!',
+            role: 'confirm',
+            handler: () => {
+              this.killMunchkin(id);
+              alert.dismiss();
+            },
+          },
+        ],  
+    });
+    await alert.present();
+  }
 }

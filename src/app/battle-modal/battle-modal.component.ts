@@ -25,7 +25,7 @@ export class BattleModalComponent  implements OnInit {
   ngOnInit(): void {
     this.id=this.getMunchkinIndex(this.id)
   }
-  
+
   getMunchkinIndex(idCheck:number){
     const munchkins=this.getMunchkins();
     return munchkins.findIndex(x=>x.id===idCheck)
@@ -59,11 +59,11 @@ export class BattleModalComponent  implements OnInit {
     let power=0
     if(this.ally!==undefined){
       power+=this.getMunchkins()[this.id].level+this.getMunchkins()[this.id].items+this.ally.items+this.ally.level+this.munchkinBonuses[0]+this.munchkinBonuses[1]
-      console.log(power)
+      
       return power
     }
     power+=this.getMunchkins()[this.id].level+this.getMunchkins()[this.id].items+this.munchkinBonuses[0]
-    console.log(power)
+    
     return power;
   }
 
@@ -72,7 +72,7 @@ export class BattleModalComponent  implements OnInit {
     this.monsters.forEach(monster => {
       power+=monster.bonus+monster.strength
     });
-    console.log(power);
+    
     return power;
   }
 

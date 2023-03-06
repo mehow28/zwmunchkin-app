@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Niconne&display=swap');
 ion-item {
     --padding-start: 0;
     --inner-padding-end: 0;
@@ -10,15 +12,12 @@ ion-item {
   }
   
   ion-icon{
-    font-size: 16px;
-  }
-  .del-icon{
-    font-size:24px;
+    font-size: 20px;
   }
   
   ion-label {
-    margin-top: 12px;
-    margin-bottom: 12px;
+    margin-top: 8px;
+    margin-bottom: 6px;
   }
   
   ion-item h2 {
@@ -37,6 +36,8 @@ ion-item {
     float: right;
     align-items: center;
     display: flex;
+    margin:0px;
+    padding:0px;
   }
   
   ion-item ion-icon {
@@ -70,3 +71,18 @@ ion-item {
     font-size: 11px;
     font-weight: normal;
   }
+  
+  p{
+    padding-top:5px;
+  }
+  
+  h3{
+    font-family: 'MedievalSharp', cursive;
+    font-size:18px;
+  }
+  h2{
+    font-family: 'Niconne',cursive;
+    font-size:40px;
+    padding-bottom:10px;
+  }
+  

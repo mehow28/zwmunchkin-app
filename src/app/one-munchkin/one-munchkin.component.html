@@ -1,22 +1,22 @@
 <span *ngIf="viewMode==='homePage'">
-  <ion-item *ngIf="munchkin.id>0" (click)="!isEditMode?showMunchkinModal(munchkin.id):''"  [detail]="false">
+  <ion-item button *ngIf="munchkin.id>0" (click)="!isEditMode?showMunchkinModal(munchkin.id):''"  [detail]="false">
     <ion-label class="munchkin-item"> 
-      <div *ngIf="isEditMode;else noEditMode" (click)="editMunchkinAlert()"><h2>{{ munchkin.name }}</h2></div><ng-template #noEditMode><h2>{{ munchkin.name }}</h2></ng-template>
+      <div *ngIf="isEditMode;else noEditMode" (click)="editMunchkinAlert()"><h3 class="munchkin-name">{{ munchkin.name }}</h3></div><ng-template #noEditMode><h3>{{ munchkin.name }}</h3></ng-template>
       <p><ion-icon *ngIf="munchkin.male; else femaleMunchkin" name="male-outline"/><ng-template #femaleMunchkin ><ion-icon name="female-outline"/></ng-template></p> 
     </ion-label>
     <ion-label slot="end" class="munchkin-item">
-      <h2>{{munchkin.level}} // {{munchkin.level+munchkin.items}}<ion-icon *ngIf="isEditMode" class="del-icon" name="trash-outline" (click)="removeMunchkinAlert()"/></h2>
+      <h2><ion-icon name="body-outline"/>  {{munchkin.level}} <ion-icon name="diamond-outline"/>  {{munchkin.level+munchkin.items}}<ion-icon *ngIf="isEditMode" class="del-icon" name="trash-outline" (click)="removeMunchkinAlert()"/></h2>
     </ion-label> 
   </ion-item>
 </span>
 <span *ngIf="viewMode==='modalPage'">
-  <ion-item *ngIf="munchkin.id>0" [detail]="false">
+  <ion-item button *ngIf="munchkin.id>0" [detail]="false">
     <ion-label class="munchkin-item"> 
-      <h2>{{ munchkin.name }}</h2>
+      <h3>{{ munchkin.name }}</h3>
       <p><ion-icon *ngIf="munchkin.male; else femaleMunchkin" name="male-outline"/><ng-template #femaleMunchkin ><ion-icon name="female-outline"/></ng-template></p> 
     </ion-label>
     <ion-label slot="end" class="munchkin-item">
-      <h2>{{munchkin.level}} // {{munchkin.level+munchkin.items}}</h2>
+      <h2><ion-icon name="body-outline"/>  {{munchkin.level}} <ion-icon name="diamond-outline"/>  {{munchkin.level+munchkin.items}}</h2>
     </ion-label> 
   </ion-item>
 </span>

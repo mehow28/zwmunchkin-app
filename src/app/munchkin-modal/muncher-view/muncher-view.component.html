@@ -8,10 +8,10 @@
 </ion-card>  -->
 
 <ion-grid>
-  <ion-row>
+  <ion-row class="ion-align-items-center">
     <ion-col size="4"></ion-col>
     <ion-col size="4">
-      <ion-button class="btn btn-primary" (click)="showMunchkinModal(munchkin.id)">Walka</ion-button>
+      <ion-button color="medium" class="battle-button" (click)="showMunchkinModal(munchkin.id)">Walka!</ion-button>
     </ion-col>
     <ion-col size="4"></ion-col>
     <ion-col size="4"></ion-col>
@@ -20,19 +20,45 @@
     <ion-col size="4"></ion-col>
     <ion-col size="4" class="num-val"><h1>{{munchkin.level+munchkin.items}}</h1></ion-col>
     <ion-col size="4"></ion-col>
-    <ion-col size="6">Poziom</ion-col>
-    <ion-col size="6">Przedmioty</ion-col>
+    <ion-col size="6">
+      Poziom  <ion-icon name="body-outline"/>
+    </ion-col>
+    <ion-col size="1"></ion-col>
+    <ion-col size="5">
+      Przedmioty  <ion-icon name="diamond-outline"/>
+    </ion-col>
     <ion-col size="1"></ion-col>
     <ion-col size="4" class="num-val"><h2>{{munchkin.level}}</h2></ion-col>
-    <ion-col size="2"><ion-icon (click)="changeMunchkinSex(munchkin.id)" *ngIf="munchkin.male; else femaleMunchkin" name="male-outline"/><ng-template #femaleMunchkin ><ion-icon (click)="changeMunchkinSex(munchkin.id)" name="female-outline"/></ng-template></ion-col>
+    <ion-col size="2">
+      <ion-button class="munchkin-action-button" ripple fill="clear" color="dark" shape="round" (click)="changeMunchkinSex(munchkin.id)">
+        <ion-icon class="change-sex-icon" *ngIf="munchkin.male; else femaleMunchkin" name="male-outline"/>
+        <ng-template #femaleMunchkin ><ion-icon class="change-sex-icon" name="female-outline"/></ng-template>
+      </ion-button>
+    </ion-col>
     <ion-col size="4" class="num-val"><h2>{{munchkin.items}}</h2></ion-col>
     <ion-col size="1"></ion-col>
     <ion-col size="1"></ion-col>
-    <ion-col size="2"><ion-icon (click)="changeMunchkinLevel(munchkin.id,false)" name="remove-outline"></ion-icon></ion-col>
-    <ion-col size="2"><ion-icon (click)="changeMunchkinLevel(munchkin.id,true)" name="add-outline"></ion-icon></ion-col>
+    <ion-col size="2">
+      <ion-button class="munchkin-action-button" ripple fill="clear" color="dark" shape="round" (click)="changeMunchkinLevel(munchkin.id,false)" >
+        <ion-icon name="remove-outline"></ion-icon>
+      </ion-button>
+    </ion-col>
+    <ion-col size="2">
+      <ion-button class="munchkin-action-button" ripple fill="clear" color="dark" shape="round" (click)="changeMunchkinLevel(munchkin.id,true)">
+        <ion-icon  name="add-outline"></ion-icon>
+      </ion-button>
+    </ion-col>
     <ion-col size="2"></ion-col>
-    <ion-col size="2"><ion-icon (click)="changeMunchkinItems(munchkin.id,false)" name="remove-outline"></ion-icon></ion-col>
-    <ion-col size="2"><ion-icon (click)="changeMunchkinItems(munchkin.id,true)" name="add-outline"></ion-icon></ion-col>
+    <ion-col size="2">
+      <ion-button class="munchkin-action-button" ripple fill="clear" color="dark" shape="round" (click)="changeMunchkinItems(munchkin.id,false)" >
+        <ion-icon name="remove-outline"></ion-icon>
+      </ion-button>
+    </ion-col>
+    <ion-col size="2">
+      <ion-button class="munchkin-action-button" ripple fill="clear" color="dark" shape="round" (click)="changeMunchkinItems(munchkin.id,true)">
+        <ion-icon name="add-outline"></ion-icon>
+      </ion-button>
+    </ion-col>
     <ion-col size="1"></ion-col>
   </ion-row>
 </ion-grid>

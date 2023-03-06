@@ -1,4 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Niconne&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap');
+ion-grid{
+    padding-bottom:12px
+}
 ion-card{
     padding:0;
     margin:0;
@@ -10,11 +14,14 @@ ion-card-header{
 }
 ion-row{
     text-align: center;
+    font-family: 'MedievalSharp', cursive;
+    font-size:18px;
 }
-ion-icon{
-    font-size: 24px;
+.change-sex-icon{
+    font-size:26px;
 }
 .num-val{
+    padding-top:0px;
     font-family: 'Niconne', cursive;
 }
 h1{
@@ -27,3 +34,11 @@ h2{
     margin:0px;
     font-size:40px;
 }
+.battle-button{
+    padding-bottom:5px;
+    font-family: 'MedievalSharp', cursive;
+}
+.munchkin-action-button{
+    margin-left: -16px;
+}
+

@@ -3,7 +3,9 @@
     <ion-title size="large">
       ZWMunchkin
     </ion-title>
-    <ion-icon name="create-outline" slot="end" class="edit-icon" (click)="editCheck=!editCheck"/>
+    <ion-button slot="end"  class="munchkin-action-button" ripple fill="clear" color="dark" shape="round" (click)="editCheck=!editCheck">
+      <ion-icon name="create-outline" class="edit-icon" />
+    </ion-button>
   </ion-toolbar>
 </ion-header>
 
