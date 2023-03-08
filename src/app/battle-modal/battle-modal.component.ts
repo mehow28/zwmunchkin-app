@@ -19,7 +19,6 @@ export class BattleModalComponent  implements OnInit {
   monsters: Monster[] = [{ strength: 0, bonus: 0 }];
   munchkinBonuses:number[]=[0,0];
 
-
   constructor(private modalCtrl: ModalController, private data:MunchkinService) {}
 
   ngOnInit(): void {
@@ -74,6 +73,16 @@ export class BattleModalComponent  implements OnInit {
     });
     
     return power;
+  }
+
+  getPowerColor(side:string){
+    if(this.getMonstersPower()>this.getMunchkinPower()){
+      return side==='monsters'?'green':'red'
+    }
+    if(this.getMonstersPower()<this.getMunchkinPower()){
+      return side==='party'?'green':'red'
+    }
+    return 'yellow'
   }
 
 }
