@@ -1,6 +1,6 @@
 # Munchkin Level Counter with Battle Module
 
-Simple Munchkin level counter with battle module, meant to be an Android app. Made using Angular with Ionic. The app is designed to help players keep track of their levels and all of the fun numbers you need to keep track of in battle. Currently only in polish; this will be put in the appropriate branch and the english version will be the main.
+Simple Munchkin level counter with battle module, meant to be an Android app. Made using Angular with Ionic. The app is designed to help players keep track of their levels and all of the fun numbers you need to keep track of in battle. Currently only in polish.
 
 ## Installation
 
